@@ -1,6 +1,8 @@
+
+!TODO: Fix trigonometric angle / radian issues
 module vec2d
     implicit none
-    real :: rad_to_deg = 3.141 / 180
+    real :: rad_to_deg = 180 / 3.141
 
     type Vector_2D
         real :: x, y
@@ -230,5 +232,14 @@ contains
 
         cross = this%x * other%y - this%y*other%x
     end function cross
+
+    function array(this)
+        type(Vector_2D), intent(in) :: this
+        real :: array(2)
+
+        array(1) = this%x
+        array(2) = this%y
+
+    end function array
 
 end module vec2d
