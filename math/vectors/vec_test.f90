@@ -16,4 +16,5 @@ program vector_test
 
     call print(a)
 
+
 end program vector_test

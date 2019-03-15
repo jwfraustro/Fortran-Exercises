@@ -1,4 +1,3 @@
-
 !TODO: Fix trigonometric angle / radian issues
 module vec2d
     implicit none
@@ -233,13 +232,13 @@ contains
         cross = this%x * other%y - this%y*other%x
     end function cross
 
-    function array(this)
+    function as_array(this)
         type(Vector_2D), intent(in) :: this
-        real :: array(2)
+        real :: as_array(2)
 
-        array(1) = this%x
-        array(2) = this%y
+        as_array(1) = this%x
+        as_array(2) = this%y
 
-    end function array
+    end function as_array
 
 end module vec2d

@@ -107,4 +107,26 @@ contains
 
     end subroutine rotate_around_y
 
+!#############################################
+!       Unfinished Functions
+!    rotated_around_z
+!    rotated_around_x
+!    rotated_around_y
+!    get_angle_around_x
+!    get_angle_around_y
+!    get_angle_around_z
+!    set_angle_around_x
+!    set_angle_around_y
+!    set_angle_around_z
+!    get_angle_between
+!    normalized
+!    normalize_return_length
+!    dot
+!    get_distance
+!    get_distance_sqrd
+!    projection
+!    cross
+!    as_array
+!#############################################
+
 end module vec3d
