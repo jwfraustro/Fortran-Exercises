@@ -137,7 +137,7 @@ contains
             rpad(i:i) = string(i:i)
         END DO
 
-        DO i = LEN(string), LEN(rpad)
+        DO i = LEN(string)+1, LEN(rpad)
             rpad(i:i) = char
         END DO
     end function rpad
@@ -158,5 +158,34 @@ contains
         END DO
 
     end function cpad
+
+    function is_digits(string)
+        character(*) :: string
+        logical :: is_digits
+        integer :: i
+
+        is_digits = .true.
+
+        DO i=1, LEN(string)
+            if (INDEX(ascii_digits, string(i:i))==0) then
+                is_digits = .false.
+                exit
+            end if
+        END DO
+    end function is_digits
+
+    function is_letters(string)
+        character(*) :: string
+        logical :: is_letters
+        integer ::i
+
+        is_letters = .true.
+
+        DO i=1, LEN(string)
+            if(INDEX(ascii_letters, string(i:i)) == 0) then
+                is_letters = .false.
+            end if
+        END DO
+    end function is_letters
 
 end module string_utils
