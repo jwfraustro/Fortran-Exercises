@@ -41,6 +41,14 @@ module matrixlib
         module procedure transpose_3d
     end interface transpose
 
+    interface inverse
+        module procedure inverse_2d
+    end interface inverse
+
+    interface cofactor
+        module procedure cofactor_2d
+    end interface cofactor
+
 contains
 
     function determinant_2d(this)
@@ -92,5 +100,31 @@ contains
         transpose_3d%arr(3,2) = this%arr(2,3)
         
     end function transpose_3d
+
+    function cofactor_2d(this)
+        type(Matrix_2D) :: this
+        type(Matrix_2D) :: cofactor_2d
+
+        cofactor_2d%arr(1,1) = this%arr(2,2)
+        cofactor_2d%arr(1,2) = -this%arr(2,1)
+        cofactor_2d%arr(2,1) = -this%arr(1,2)
+        cofactor_2d%arr(2,2) = this%arr(1,1)
+
+    end function cofactor_2d
+
+    function inverse_2d(this)
+        type(Matrix_2D) :: this
+        type(Matrix_2D) :: inverse_2d
+        real :: det_factor
+
+        det_factor = 1 / (determinant(this))
+
+        inverse_2d%arr(1,1) = this%arr(2,2)*det_factor
+        inverse_2d%arr(2,2) = this%arr(1,1)*det_factor
+
+        inverse_2d%arr(1,2) = -this%arr(1,2)*det_factor
+        inverse_2d%arr(2,1) = -this%arr(2,1)*det_factor
+
+    end function inverse_2d
 
 end module matrixlib

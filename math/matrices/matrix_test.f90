@@ -15,4 +15,7 @@ program matrix_test
     print *, '3D Determinant: ', determinant(mat_3)
 
     print *, '2D Transpose: ', transpose(mat_2)
+    print *, '3D Transpose: ', transpose(mat_3)
+
+    print *, '2D Inverse: ', inverse(mat_2)
 end program matrix_test
