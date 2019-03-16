@@ -115,8 +115,48 @@ contains
 
     function lpad(string, char, n)
         character(*) :: string, char
-        integer :: n
-        
+        integer :: n, i
+        character(LEN(string)+LEN(char)*n) :: lpad
+
+        DO i=1, n
+            lpad(i:i) = char
+        END DO
+
+        DO i = 1, len(string)
+            lpad(i+n:i+n) = string(i:i)
+        END DO
+
     end function lpad
+
+    function rpad(string, char, n)
+        character(*) :: string, char
+        integer :: n, i
+        character(LEN(string)+LEN(char)*n) :: rpad
+
+        DO i = 1, LEN(string)
+            rpad(i:i) = string(i:i)
+        END DO
+
+        DO i = LEN(string), LEN(rpad)
+            rpad(i:i) = char
+        END DO
+    end function rpad
+
+    function cpad(string, char, n)
+        character(*) :: string, char
+        integer :: n, i
+        character(LEN(string)+LEN(char)*n*2) :: cpad
+
+        DO i = 1, n
+            cpad(i:i) = char
+        END DO
+        DO i=1, LEN(string)
+            cpad(i+n:i+n) = string(i:i)
+        END DO
+        DO i=LEN(string)+n+1, LEN(cpad)
+            cpad(i:i) = char
+        END DO
+
+    end function cpad
 
 end module string_utils
