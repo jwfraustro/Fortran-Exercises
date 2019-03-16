@@ -8,7 +8,7 @@
 !adjugated
 !copy
 !determinant
-!identity
+!identity   `
 !invert
 !inverted
 !normalize
@@ -19,3 +19,78 @@
 !zero
 !is_orthogonal
 !#########################################
+
+module matrixlib
+    implicit none
+
+    type Matrix_2D
+        real, dimension(2,2) :: arr
+    end type Matrix_2D
+
+    type Matrix_3D
+        real, dimension(3,3) :: arr
+    end type Matrix_3D
+
+    interface determinant
+        module procedure determinant_2d
+        module procedure determinant_3d
+    end interface determinant
+
+    interface transpose
+        module procedure transpose_2d
+        module procedure transpose_3d
+    end interface transpose
+
+contains
+
+    function determinant_2d(this)
+        type(Matrix_2D) :: this
+        real :: determinant_2d
+
+        determinant_2d = (this%arr(1,1)*this%arr(2,2)-this%arr(1,2)*this%arr(2,1))
+    end function
+
+    function determinant_3d(this)
+        type(Matrix_3D) :: this
+        real :: determinant_3d, det_x, det_y, det_z
+
+        det_x = this%arr(1,1)*(this%arr(2,2)*this%arr(3,3)-this%arr(2,3)*this%arr(3,2))
+        det_y = this%arr(1,2)*(this%arr(2,1)*this%arr(3,3)-this%arr(2,3)*this%arr(3,1))
+        det_z = this%arr(1,3)*(this%arr(2,1)*this%arr(3,2)-this%arr(2,2)*this%arr(3,1))
+
+        determinant_3d = det_x - det_y + det_z
+
+    end function determinant_3d
+
+    function transpose_2d(this)
+        type(Matrix_2D) :: this
+        type(Matrix_2D) :: transpose_2d
+
+        transpose_2d%arr(1,1) = this%arr(1,1)
+        transpose_2d%arr(2,2) = this%arr(2,2)
+
+        transpose_2d%arr(1,2) = this%arr(2,1)
+        transpose_2d%arr(2,1) = this%arr(1,2)
+
+    end function transpose_2d
+    
+    function transpose_3d(this)
+        type(Matrix_3D) :: this
+        type(Matrix_3D) :: transpose_3d
+        
+        transpose_3d%arr(1,1) = this%arr(1,1)
+        transpose_3d%arr(2,2) = this%arr(2,2)
+        transpose_3d%arr(3,3) = this%arr(3,3)
+        
+        transpose_3d%arr(1,2) = this%arr(2,1)
+        transpose_3d%arr(2,1) = this%arr(1,2)
+        
+        transpose_3d%arr(1,3) = this%arr(3,1)
+        transpose_3d%arr(3,1) = this%arr(1,3)
+        
+        transpose_3d%arr(2,3) = this%arr(3,2)
+        transpose_3d%arr(3,2) = this%arr(2,3)
+        
+    end function transpose_3d
+
+end module matrixlib
