@@ -58,7 +58,6 @@ contains
         DO WHILE(.NOT.A(i))
             i = i - 1
         END DO
-        DEALLOCATE(A)
 
         sieverEr = i
 
