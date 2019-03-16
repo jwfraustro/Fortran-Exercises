@@ -1,2 +1,2 @@
 # FortranWork
-Small scripts, utilities and functions to develop my Fortan95 experience.
+Small scripts, utilities and functions to develop my Fortan 90 experience.
