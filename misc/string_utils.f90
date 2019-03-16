@@ -96,22 +96,22 @@ contains
         END DO
     end function lower
 
-    function proper(string)
+    function title(string)
         character(*) :: string
-        character(LEN(string)) :: proper
+        character(LEN(string)) :: title
         integer :: i
 
         DO i = 1, LEN(string)
             if (i == 1 .and. is_lowercase(string(i:i))) then
-                proper(i:i) = upper(string(i:i))
+                title(i:i) = upper(string(i:i))
             else if (i > 1 .and. ICHAR(string(i - 1 : i - 1)) == 32 .and. is_lowercase(string(i : i))) then
-                proper(i : i) = upper(string(i : i))
+                title(i : i) = upper(string(i : i))
             else
-                proper(i:i) = string(i:i)
+                title(i:i) = string(i:i)
             end if
 
         END DO
-    end function proper
+    end function title
 
     function lpad(string, char, n)
         character(*) :: string, char
@@ -187,5 +187,22 @@ contains
             end if
         END DO
     end function is_letters
+
+    function swap_case(string)
+        character(*) :: string
+        character(LEN(string)) :: swap_case
+        integer :: i
+
+        DO i=1, LEN(string)
+            if (is_uppercase(string(i:i))) then
+                swap_case(i:i) = lower(string(i:i))
+            else if (is_lowercase(string(i:i))) then
+                swap_case(i:i) = upper(string(i:i))
+            else
+                swap_case(i:i) = string(i:i)
+            end if
+        END DO
+
+    end function swap_case
 
 end module string_utils

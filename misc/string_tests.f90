@@ -11,7 +11,8 @@ program string_tests
 
     print *, 'Upper: ', upper(string)
     print *, 'Lower: ', lower(string)
-    print *, 'Proper: ', proper(lower(string))
+    print *, 'Proper: ', title(lower(string))
+    print *, 'Swapped Case: ', swap_case(string)
 
     print *, 'Left Pad (5 x #): ', lpad(string, '#', 5)
     print *, 'Right Pad (5 x #): ', rpad(string,'#',5)
