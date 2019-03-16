@@ -21,4 +21,6 @@ program optics_test
     print *, 'N_1: ', snells_law(n2=n2, theta1=theta1, theta2=theta2)
     print *, 'N_2: ', snells_law(n1=n1, theta1=theta1, theta2=theta2)
 
+    print *, 'Beam Displacement: ', beam_displacement(n1=n1, n2=n2, theta=theta1, h=3.0)
+
 end program optics_test

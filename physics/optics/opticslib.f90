@@ -49,4 +49,16 @@ contains
         end if
 
     end function snells_law
+
+    function beam_displacement(n1, n2, theta, h)
+        real, intent(in) :: n1, n2, theta, h
+        real :: beam_displacement, rad_theta
+
+        rad_theta = deg_to_rad(theta)
+
+        beam_displacement = h*SIN(rad_theta)*(1-(COS(rad_theta)/SQRT((n2/n1)**2 - SIN(rad_theta)**2)))
+
+    end function beam_displacement
+
+
 end module opticslib
