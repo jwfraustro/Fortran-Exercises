@@ -1,6 +1,6 @@
 ! Title: Fractional Knapsack
 ! Author: Joshua Fraustro
-! Repository: https://github.com/jwfraustro/FortranUtilities
+! Repository: https://github.com/jwfraustro/Fortran-Exercises
 !
 ! Fortran 90 program to find the optimal weight / value loading for a knapsack.
 !

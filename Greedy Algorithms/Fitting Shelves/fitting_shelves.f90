@@ -1,6 +1,6 @@
 ! Title: Fitting Shelves
 ! Author: Joshua Fraustro
-! Repository: https://github.com/jwfraustro/FortranUtilities
+! Repository: https://github.com/jwfraustro/Fortran-Exercises
 !
 ! Fortran 90 program to find the maximum number of shelves of a two lengths, prefering the larger sizes.
 !
